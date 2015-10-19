@@ -1,0 +1,13 @@
+db:
+    image: mongo:3
+    mem_limit: 2g
+    restart: always
+    volumes:
+        - ./data:/data/db
+app:
+    build: ./uptime
+    restart: always
+    links:
+        - db
+    ports:
+        - "8082:8082"
